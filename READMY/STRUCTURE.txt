@@ -1,0 +1,107 @@
+BAS_ARELERIO/
+│
+├── READMY/ 		# Документация проекта
+│ ├── READMY_MAIN.txt 	# Основное описание проекта
+│ └── STRUCTURE.txt 	# Структура проекта
+│
+├── UI/ 		# Файлы интерфейса Qt Designer
+│ ├── GUI_FREL.ui 		# Главное окно интерфейса
+│ └── CreateNPY_FREL.ui 	# Окно создания базы данных
+│
+├── Основные модули:
+│ ├── GUI_FREL.py 		# Главный модуль приложения
+│ ├── AI_YOLO_FREL.py 	# Детекция и распознавание лиц
+│ ├── TheFace_FREL.py 	# Модуль распознавания конкретных лиц
+│ ├── CreateNPY_FREL.py 	# Создание базы данных лиц
+│ └── LinerDasher_FREL.py 	# Утилиты рисования рамок
+│
+├── Конвертированные UI модули:
+│ ├── UI_GUI_FREL.py 	# Автогенерация из GUI_FREL.ui
+│ └── UI_CreateNPY_FREL.py 	# Автогенерация из CreateNPY_FREL.ui
+│
+├── Ресурсы и модели:
+│ ├── yolov8n-face.pt 		# Модель YOLOv8 для детекции лиц
+│ ├── face_database.npy 	# База данных лиц
+│ └── data/ 		
+│ └── haarcascade_frontalface_default.xml	# Данные каскадов Haar
+│
+├── Вспомогательные файлы:
+│ ├── config.py 		# Настройка окружения
+│ ├── hook-tools_all.py 	# Хуки для PyInstaller
+│ └── build.spec 		# Конфигурация сборки
+│
+└── Исполняемые файлы:
+└── (После сборки) Arelerio.exe
+
+
+
+ДЕТАЛЬНОЕ ОПИСАНИЕ СТРУКТУРЫ:
+
+READMY/ - содержит всю документацию проекта
+
+READMY_MAIN.txt: полное описание функциональности, архитектуры и использования
+
+STRUCTURE.txt: иерархия файлов и папок проекта
+
+UI/ - исходные файлы интерфейса Qt Designer
+
+GUI_FREL.ui: XML-описание главного окна с разметкой всех элементов
+
+CreateNPY_FREL.ui: XML-описание окна создания базы данных
+
+Основные модули Python:
+
+GUI_FREL.py: основной класс приложения, управление интерфейсом и потоками
+
+AI_YOLO_FREL.py: ядро обработки - детекция, трекинг и распознавание
+
+TheFace_FREL.py: логика работы с базой данных лиц и сравнения сигнатур
+
+CreateNPY_FREL.py: функционал создания и объединения баз данных
+
+LinerDasher_FREL.py: вспомогательные функции графики
+
+Сгенерированные UI модули (не редактировать вручную):
+
+UI_GUI_FREL.py: автоматически сгенерированный из GUI_FREL.ui
+
+UI_CreateNPY_FREL.py: автоматически сгенерированный из CreateNPY_FREL.ui
+
+Ресурсы:
+
+yolov8n-face.pt: предобученная модель YOLO для обнаружения лиц
+
+face_database.npy: бинарный файл с базой данных лиц (создается при первом запуске)
+
+data/: папка с каскадами Haar для OpenCV
+
+Вспомогательные файлы:
+
+config.py: настройка переменных окружения и путей
+
+hook-tools_all.py: конфигурация хуков для корректной сборки PyInstaller
+
+build.txt: параметры и скрытые импорты для сборки
+
+ЗАВИСИМОСТИ МЕЖДУ МОДУЛЯМИ:
+
+GUI_FREL.py → UI_GUI_FREL.py (интерфейс)
+GUI_FREL.py → AI_YOLO_FREL.py (обработка видео)
+GUI_FREL.py → CreateNPY_FREL.py (управление БД)
+GUI_FREL.py → TheFace_FREL.py (распознавание)
+
+AI_YOLO_FREL.py → TheFace_FREL.py (сравнение лиц)
+AI_YOLO_FREL.py → LinerDasher_FREL.py (визуализация)
+
+CreateNPY_FREL.py → UI_CreateNPY_FREL.py (интерфейс БД)
+
+ВСЕ МОДУЛИ → config.py (настройки окружения)
+
+СБОРКА ПРОЕКТА:
+Проект использует PyInstaller для создания исполняемого файла.
+Конфигурация сборки описана в build.txt и hook-tools_all.py
+
+ЗАПУСК:
+Основная точка входа - GUI_FREL.py
+Для разработки: python GUI_FREL.py
+Для production: использовать собранный исполняемый файл
